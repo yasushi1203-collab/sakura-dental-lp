@@ -3,419 +3,832 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>さくら歯科クリニック｜お子さんの歯も、お父さん・お母さんの歯も。【制作サンプル】</title>
-<meta name="description" content="架空の歯科医院「さくら歯科クリニック」を題材としたランディングページの制作サンプルです。">
+<title>保護者の方の初診・ご相談｜さくら歯科クリニック（架空医院の制作サンプル）</title>
+<meta name="description" content="架空の歯科医院「さくら歯科クリニック」を題材としたランディングページの制作サンプルです。お子さんが通院中のご家庭の保護者に向けた初診・ご相談のご案内ページです。">
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 5c-3-2.5-9-2-10 3-.8 4 1 7 2 10 1 3 1.5 9 3.5 9 2.2 0 2-6 4.5-6s2.3 6 4.5 6c2 0 2.5-6 3.5-9 1-3 2.8-6 2-10-1-5-7-5.5-10-3z' fill='%23FFFFFF' stroke='%234F7055' stroke-width='2'/%3E%3C/svg%3E">
 <style>
-  :root {
-    --white: #FFFFFF;
-    --green-50: #EEF5EF;
-    --green-200: #CFE2D3;
-    --green-600: #4C7A5C;
-    --green-700: #3E6650;
-    --beige: #F5EEE3;
-    --sand: #E3D6C2;
-    --ink: #2A3A31;
-    --muted: #56655C;
-    --radius-l: 24px;
-    --radius-s: 12px;
-    --font-head: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-    --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    background: var(--white);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.9;
-    letter-spacing: 0.02em;
-    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
-  }
-  img, svg { max-width: 100%; height: auto; display: block; }
-  a { color: var(--green-700); }
-  :focus-visible { outline: 3px solid var(--green-600); outline-offset: 3px; border-radius: 6px; }
-  .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px; }
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* =========================================================
+   Design tokens
+   ========================================================= */
+:root {
+  --bg: #FBF8F3;          /* 温かみのあるオフホワイト */
+  --surface: #FFFFFF;
+  --sage-50: #F2F6F0;
+  --sage-100: #E7EFE4;
+  --sage-300: #B7CBB2;
+  --sage-500: #7E9D7C;
+  --sage-700: #4F7055;    /* ボタン（白文字とのコントラスト確保） */
+  --sage-800: #3F5C45;
+  --apricot-50: #FDF3EA;
+  --apricot-100: #FBE7D7;
+  --apricot-300: #F1C3A0;
+  --beige: #F1E9DD;
+  --line: #E7DED0;
+  --text: #3A3A3A;
+  --text-sub: #626262;
 
-  /* 制作サンプル表記 */
-  .sample-notice {
-    background: var(--ink);
-    color: var(--white);
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: center;
-    padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 8px;
-  }
+  --radius-xl: 32px;
+  --radius-l: 20px;
+  --radius-m: 14px;
 
-  /* ヘッダー */
-  .site-header { border-bottom: 1px solid var(--green-200); }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
-  .logo { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .logo-mark { width: 28px; height: 28px; }
-  .header-link { font-size: 14px; font-weight: 700; text-decoration: none; padding: 10px 4px; }
+  --font: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Noto Sans JP", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
+  --font-head: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
 
-  /* ボタン */
-  .btn {
-    display: flex; align-items: center; justify-content: center;
-    min-height: 56px; padding: 12px 24px;
-    border-radius: 999px; border: 2px solid var(--green-600);
-    font-family: var(--font-head); font-size: 17px; font-weight: 700;
-    text-decoration: none; cursor: pointer; text-align: center; line-height: 1.4;
-  }
-  .btn-primary { background: var(--green-600); color: var(--white); }
-  .btn-primary:hover { background: var(--green-700); border-color: var(--green-700); }
-  .btn-secondary { background: var(--white); color: var(--green-700); }
-  .btn-secondary:hover { background: var(--green-50); }
-  .btn-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; text-align: center; }
+  --wrap: 1080px;
+  --gutter: 20px;
+}
 
-  /* ファーストビュー */
-  .hero { background: var(--green-50); padding: 40px 0 48px; overflow: hidden; }
-  .hero .wrap { display: grid; gap: 24px; }
-  .hero-illust { width: 180px; margin: 0 auto; }
-  .hero h1 {
-    font-family: var(--font-head);
-    font-size: clamp(26px, 7vw, 40px);
-    line-height: 1.5; margin: 0; letter-spacing: 0.04em;
-  }
-  .hero h1 .line2 { display: block; font-size: 0.72em; color: var(--green-700); margin-top: 8px; }
-  .hero-lead { margin: 0; font-size: 16px; }
-  .hero-actions { display: grid; gap: 12px; }
+/* =========================================================
+   Base
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  overflow-x: clip;
+  line-break: strict;
+  font-feature-settings: "palt" 0;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--sage-800); }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.5; margin: 0; letter-spacing: 0.04em; }
+p { margin: 0; text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; }
+:focus-visible { outline: 3px solid var(--sage-700); outline-offset: 3px; border-radius: 8px; }
 
-  /* セクション共通 */
-  section.block { padding: 64px 0; }
-  section.block.tint-beige { background: var(--beige); }
-  section.block.tint-green { background: var(--green-50); }
-  .block h2 {
-    font-family: var(--font-head);
-    font-size: clamp(22px, 5.6vw, 30px);
-    line-height: 1.55; margin: 0 0 24px;
-    padding-left: 16px; border-left: 6px solid var(--green-600);
-  }
-  .block p { margin: 0 0 16px; }
+/* 文節のまとまりで折り返すための単位 */
+.ph { display: inline-block; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.only-pc { display: none; }
 
-  /* 共感 */
-  .checklist { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 12px; }
-  .checklist li {
-    background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-s);
-    padding: 14px 16px 14px 52px; position: relative;
-  }
-  .checklist li::before {
-    content: ""; position: absolute; left: 16px; top: 17px;
-    width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--green-600); background: var(--white);
-  }
-  .checklist li::after {
-    content: ""; position: absolute; left: 23px; top: 20px;
-    width: 7px; height: 12px; border: solid var(--green-600); border-width: 0 3px 3px 0; transform: rotate(45deg);
-  }
-  .empathy-close { font-family: var(--font-head); font-size: 18px; font-weight: 700; line-height: 1.7; }
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 56px; padding: 0 28px;
+  border-radius: 999px; border: 2px solid transparent;
+  font-family: var(--font-head); font-size: 16px; font-weight: 700; letter-spacing: 0.06em;
+  text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.btn-primary { background: var(--sage-700); color: #fff; box-shadow: 0 6px 16px rgba(79,112,85,.22); }
+.btn-primary:hover { background: var(--sage-800); }
+.btn-ghost { background: transparent; color: var(--sage-800); border-color: var(--sage-300); }
+.btn-ghost:hover { background: var(--sage-50); border-color: var(--sage-500); }
+.btn .chev { width: 16px; height: 16px; flex: none; }
 
-  /* 方針 */
-  .policy-list { display: grid; gap: 28px; margin: 32px 0 0; }
-  .policy-item h3 { font-family: var(--font-head); font-size: 19px; margin: 0 0 6px; color: var(--green-700); }
-  .policy-item p { margin: 0; }
+/* =========================================================
+   Header
+   ========================================================= */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(251,248,243,.92);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 60px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); min-width: 0; }
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.brand-name { font-family: var(--font-head); font-weight: 700; font-size: 16px; white-space: nowrap; }
+.sample-tag {
+  font-size: 11px; line-height: 1.4; color: var(--text-sub); white-space: nowrap;
+  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 9px;
+}
+.header-cta { display: none; }
+.tag-long { display: none; }
+@media (min-width: 420px) { .tag-long { display: inline; } }
 
-  /* 診療内容 */
-  .services { display: grid; gap: 16px; }
-  .service { background: var(--white); border: 2px solid var(--green-200); border-radius: var(--radius-l); padding: 24px; }
-  .service h3 { font-family: var(--font-head); font-size: 20px; margin: 0 0 4px; }
-  .service .for { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
-  .service ul { margin: 0; padding-left: 1.2em; }
-  .service li { margin-bottom: 4px; }
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero { padding: 0 0 56px; }
+.hero-inner { display: flex; flex-direction: column; }
+.hero-photo { position: relative; margin: 0 calc(var(--gutter) * -1); }
+.photo-frame {
+  position: relative; overflow: hidden; background: var(--beige);
+  aspect-ratio: 4 / 3;
+}
+.hero-photo .photo-frame { border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
+.photo-frame > svg, .photo-frame > img { width: 100%; height: 100%; object-fit: cover; }
+.photo-label {
+  position: absolute; left: 14px; top: 14px;
+  font-size: 11px; line-height: 1.4; color: var(--text-sub);
+  background: rgba(255,255,255,.88); border-radius: 999px; padding: 4px 10px;
+}
+.hero-chip {
+  position: absolute; right: 16px; bottom: -22px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border-radius: 999px; padding: 10px 18px 10px 12px;
+  box-shadow: 0 8px 24px rgba(58,58,58,.10);
+  font-size: 13px; font-weight: 700; color: var(--sage-800); white-space: nowrap;
+}
+.hero-chip .dot { width: 28px; height: 28px; border-radius: 50%; background: var(--apricot-100); display: grid; place-items: center; }
+.hero-chip .dot svg { width: 16px; height: 16px; }
 
-  /* 初診の流れ */
-  .flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
-  .flow li { counter-increment: step; position: relative; padding: 0 0 28px 64px; }
-  .flow li::before {
-    content: counter(step); position: absolute; left: 0; top: 0;
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--green-600); color: var(--white);
-    font-family: var(--font-head); font-weight: 700; font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .flow li:not(:last-child)::after {
-    content: ""; position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; background: var(--green-200);
-  }
-  .flow h3 { font-family: var(--font-head); font-size: 18px; margin: 6px 0 4px; }
-  .flow p { margin: 0; }
+.hero-copy { padding-top: 48px; }
+.hero-eyebrow { font-size: 14px; color: var(--sage-800); font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.hero-eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--sage-500); border-radius: 2px; }
+.hero h1 { font-size: clamp(24px, 6.4vw, 40px); line-height: 1.6; letter-spacing: 0.05em; }
+.hero-sub { margin-top: 20px; color: var(--text-sub); font-size: 15px; line-height: 2; max-width: 34em; }
+.hero-actions { margin-top: 28px; display: grid; gap: 12px; }
+.hero-actions .btn { width: 100%; }
 
-  /* FAQ */
-  .faq { display: grid; gap: 12px; }
-  .faq details { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-s); }
-  .faq summary {
-    list-style: none; cursor: pointer;
-    padding: 16px 52px 16px 16px; position: relative;
-    font-weight: 700; min-height: 56px; display: flex; align-items: center;
-  }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after {
-    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
-    width: 28px; height: 28px; border-radius: 50%; background: var(--green-50); color: var(--green-700);
-    display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1;
-  }
-  .faq details[open] summary::after { content: "−"; }
-  .faq .answer { padding: 0 16px 16px; color: var(--ink); }
-  .faq .answer p { margin: 0; }
+/* =========================================================
+   Section common
+   ========================================================= */
+.section { padding: 72px 0; }
+.section-head { margin-bottom: 36px; }
+.section-head h2 { font-size: clamp(21px, 5.4vw, 30px); line-height: 1.6; }
+.section-head .lead { margin-top: 14px; color: var(--text-sub); max-width: 40em; }
+.section-head.center { text-align: center; }
+.section-head.center .lead { margin-left: auto; margin-right: auto; }
+.kicker { display: block; font-size: 13px; font-weight: 700; color: var(--sage-700); letter-spacing: .1em; margin-bottom: 10px; }
 
-  /* 予約 */
-  .reserve-box { background: var(--white); border-radius: var(--radius-l); padding: 28px 20px; border: 2px solid var(--green-600); }
-  .reserve-box h3 { font-family: var(--font-head); font-size: 18px; margin: 0 0 8px; }
-  .reserve-actions { display: grid; gap: 12px; margin: 20px 0 8px; }
-  .in-clinic { margin-top: 28px; padding-top: 24px; border-top: 1px dashed var(--sand); }
-  .demo-label { display: inline-block; font-size: 12px; font-weight: 700; color: var(--green-700); background: var(--green-50); border-radius: 6px; padding: 2px 8px; margin-left: 6px; vertical-align: middle; }
+/* =========================================================
+   Empathy
+   ========================================================= */
+.empathy { background: var(--surface); border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+.worries { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.worry { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: start; padding: 22px 0; border-top: 1px solid var(--line); }
+.worry:last-child { border-bottom: 1px solid var(--line); }
+.worry-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--apricot-50); display: grid; place-items: center; }
+.worry-icon svg { width: 32px; height: 32px; }
+.worry h3 { font-size: 17px; line-height: 1.6; }
+.worry p { margin-top: 6px; font-size: 15px; color: var(--text-sub); line-height: 1.85; }
+.empathy-bridge {
+  margin-top: 36px; text-align: center;
+  font-family: var(--font-head); font-weight: 700; font-size: 17px; line-height: 1.9; color: var(--sage-800);
+}
 
-  /* 追従CTA（スマホ） */
-  .sticky-cta {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
-    background: rgba(255,255,255,0.96); border-top: 1px solid var(--green-200);
-    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
-  }
-  .sticky-cta .btn { max-width: 480px; margin: 0 auto; min-height: 52px; }
+/* =========================================================
+   Reasons
+   ========================================================= */
+.reasons { background: var(--sage-100); }
+.reasons-grid { display: grid; gap: 36px; }
+.reasons-photo .photo-frame { border-radius: var(--radius-xl); aspect-ratio: 5 / 4; }
+.reason-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+.reason { display: grid; grid-template-columns: 44px 1fr; gap: 16px; }
+.reason-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--surface); display: grid; place-items: center; }
+.reason-icon svg { width: 24px; height: 24px; }
+.reason h3 { font-size: 17px; line-height: 1.6; }
+.reason p { margin-top: 4px; font-size: 15px; color: var(--text-sub); }
+.reception-note {
+  margin-top: 36px; background: var(--surface); border-radius: var(--radius-l);
+  padding: 22px 22px 22px 22px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center;
+}
+.reception-note .bubble {
+  width: 48px; height: 48px; border-radius: 50%; background: var(--apricot-100); display: grid; place-items: center;
+}
+.reception-note .bubble svg { width: 24px; height: 24px; }
+.reception-note p { font-size: 15px; line-height: 1.85; }
+.reception-note strong { color: var(--sage-800); }
 
-  /* ダイアログ */
-  dialog {
-    border: none; border-radius: var(--radius-l); padding: 28px 24px; max-width: min(92vw, 420px);
-    color: var(--ink); font-family: var(--font-body);
-  }
-  dialog::backdrop { background: rgba(42,58,49,0.55); }
-  dialog h2 { font-family: var(--font-head); font-size: 20px; margin: 0 0 12px; }
-  dialog p { margin: 0 0 20px; }
+/* =========================================================
+   Concerns (相談できること)
+   ========================================================= */
+.concerns { background: var(--bg); }
+.concern-list { display: grid; gap: 20px; }
+.concern { background: var(--surface); border-radius: var(--radius-l); padding: 26px 22px; border: 1px solid var(--line); }
+.concern-voices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.voice {
+  position: relative; font-size: 13px; line-height: 1.5; color: #6B4A33;
+  background: var(--apricot-100); border-radius: 14px 14px 14px 4px; padding: 6px 12px; white-space: nowrap;
+}
+.concern-title { display: flex; align-items: center; gap: 12px; }
+.concern-title svg { width: 36px; height: 36px; flex: none; }
+.concern h3 { font-size: 18px; }
+.concern p { margin-top: 10px; font-size: 15px; color: var(--text-sub); }
+.concern-foot { margin-top: 24px; font-size: 13px; color: var(--text-sub); text-align: center; }
 
-  /* フッター */
-  .site-footer { background: var(--ink); color: var(--white); padding: 32px 0 40px; font-size: 14px; line-height: 1.8; }
-  .site-footer .name { font-family: var(--font-head); font-size: 17px; font-weight: 700; margin: 0 0 8px; }
-  .site-footer p { margin: 0 0 8px; }
-  .site-footer .sample { border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius-s); padding: 12px 14px; margin-top: 16px; }
+/* =========================================================
+   Flow
+   ========================================================= */
+.flow { background: var(--surface); }
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 0; }
+.step { counter-increment: step; position: relative; display: grid; grid-template-columns: 72px 1fr; gap: 18px; padding-bottom: 28px; }
+.step:last-child { padding-bottom: 0; }
+.step:not(:last-child)::after {
+  content: ""; position: absolute; left: 35px; top: 76px; bottom: 6px; width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--sage-300) 0 6px, transparent 6px 12px);
+}
+.step-visual { position: relative; width: 72px; height: 72px; border-radius: 50%; background: var(--sage-50); display: grid; place-items: center; }
+.step-visual svg { width: 34px; height: 34px; }
+.step-visual::before {
+  content: counter(step); position: absolute; top: -4px; left: -4px;
+  width: 28px; height: 28px; border-radius: 50%; background: var(--sage-700); color: #fff;
+  font-family: var(--font-head); font-size: 14px; font-weight: 700; display: grid; place-items: center;
+  border: 3px solid var(--surface);
+}
+.step h3 { font-size: 17px; margin-top: 10px; }
+.step p { margin-top: 4px; font-size: 15px; color: var(--text-sub); }
+.flow-note { margin-top: 32px; font-size: 13px; color: var(--text-sub); }
 
-  /* タブレット・PC */
-  @media (min-width: 768px) {
-    body { padding-bottom: 0; }
-    .sticky-cta { display: none; }
-    .hero { padding: 64px 0 72px; }
-    .hero .wrap { grid-template-columns: 1fr 200px; align-items: center; column-gap: 40px; }
-    .hero-illust { grid-column: 2; grid-row: 1 / span 3; width: 200px; }
-    .hero-actions { grid-template-columns: 1fr 1fr; }
-    section.block { padding: 88px 0; }
-    .reserve-actions { grid-template-columns: 1fr 1fr; }
-    .reserve-box { padding: 36px 32px; }
-  }
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq { background: var(--bg); }
+.faq-list { display: grid; gap: 12px; max-width: 760px; margin: 0 auto; }
+.faq-item { background: var(--surface); border-radius: var(--radius-m); border: 1px solid var(--line); }
+.faq-item summary {
+  list-style: none; cursor: pointer; display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+  padding: 18px 18px; min-height: 60px; font-weight: 700; font-size: 15px; line-height: 1.7;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-q, .faq-a { font-family: var(--font-head); font-weight: 700; font-size: 15px; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.faq-q { background: var(--sage-700); color: #fff; }
+.faq-a { background: var(--apricot-100); color: #8A5A38; }
+.faq-toggle { width: 22px; height: 22px; position: relative; }
+.faq-toggle::before, .faq-toggle::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: var(--sage-700); border-radius: 2px; transform: translate(-50%,-50%); transition: transform .2s; }
+.faq-toggle::after { transform: translate(-50%,-50%) rotate(90deg); }
+.faq-item[open] .faq-toggle::after { transform: translate(-50%,-50%) rotate(0deg); }
+.faq-answer { display: grid; grid-template-columns: auto 1fr; gap: 12px; padding: 0 18px 20px; }
+.faq-answer p { font-size: 15px; color: var(--text); }
 
-  /* 唯一の演出：歯ブラシが寄り添う */
-  @media (prefers-reduced-motion: no-preference) {
-    .brush-big { transform-origin: 110px 200px; animation: lean-big 1.2s ease-out 0.3s both; }
-    .brush-small { transform-origin: 140px 200px; animation: lean-small 1.2s ease-out 0.3s both; }
-    @keyframes lean-big { from { transform: rotate(4deg); } to { transform: rotate(0); } }
-    @keyframes lean-small { from { transform: rotate(-6deg); } to { transform: rotate(0); } }
+/* =========================================================
+   Final CTA
+   ========================================================= */
+.final { background: var(--sage-100); padding-bottom: 88px; }
+.final-panels { display: grid; gap: 16px; }
+.panel { border-radius: var(--radius-l); padding: 28px 22px; }
+.panel-clinic { background: var(--sage-700); color: #fff; }
+.panel-home { background: var(--surface); }
+.panel-label { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 4px 12px; margin-bottom: 16px; }
+.panel-clinic .panel-label { background: rgba(255,255,255,.16); }
+.panel-home .panel-label { background: var(--sage-50); color: var(--sage-800); }
+.panel-label svg { width: 16px; height: 16px; }
+.panel h3 { font-size: 19px; line-height: 1.65; }
+.panel-text { margin-top: 12px; font-size: 15px; }
+.panel-clinic .panel-text { color: rgba(255,255,255,.92); }
+.panel-home .panel-text { color: var(--text-sub); }
+.say-this {
+  margin-top: 18px; background: var(--surface); color: var(--text); border-radius: 16px 16px 16px 4px;
+  padding: 14px 16px; font-size: 15px; font-weight: 700; line-height: 1.7;
+}
+.say-this small { display: block; font-weight: 400; font-size: 12px; color: var(--text-sub); margin-bottom: 2px; }
+.panel-home .btn { width: 100%; margin-top: 20px; }
+.demo-note { margin-top: 10px; font-size: 12px; color: var(--text-sub); display: flex; gap: 6px; align-items: flex-start; line-height: 1.6; }
+.demo-note svg { width: 14px; height: 14px; flex: none; margin-top: 2px; }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer { background: #33403A; color: #F1F1EE; padding: 48px 0 calc(112px + env(safe-area-inset-bottom, 0px)); font-size: 14px; line-height: 1.85; }
+.footer-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 700; font-size: 17px; }
+.footer-brand svg { width: 28px; height: 28px; }
+.footer-meta { margin-top: 10px; color: rgba(241,241,238,.8); }
+.footer-sample {
+  margin-top: 24px; border: 1px solid rgba(241,241,238,.35); border-radius: var(--radius-m); padding: 16px 18px;
+}
+.footer-sample strong { display: block; font-size: 15px; margin-bottom: 4px; color: #fff; }
+.footer-sample p { color: rgba(241,241,238,.85); font-size: 13px; }
+.footer-copy { margin-top: 20px; font-size: 12px; color: rgba(241,241,238,.6); }
+
+/* =========================================================
+   Sticky CTA (mobile)
+   ========================================================= */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px));
+  background: rgba(251,248,243,.95); border-top: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transform: translateY(110%); transition: transform .3s ease;
+}
+.sticky-cta.is-visible { transform: translateY(0); }
+.sticky-cta .btn { width: 100%; min-height: 52px; }
+
+/* =========================================================
+   Dialog
+   ========================================================= */
+dialog {
+  border: none; border-radius: var(--radius-l); padding: 0; width: min(92vw, 440px);
+  color: var(--text); background: var(--surface); box-shadow: 0 20px 48px rgba(0,0,0,.18);
+}
+dialog::backdrop { background: rgba(51,64,58,.55); }
+.dialog-body { padding: 30px 26px 26px; }
+.dialog-badge { display: inline-block; font-size: 12px; font-weight: 700; color: #8A5A38; background: var(--apricot-100); border-radius: 999px; padding: 3px 12px; margin-bottom: 14px; }
+dialog h2 { font-size: 19px; }
+dialog p { margin-top: 12px; font-size: 15px; color: var(--text-sub); }
+dialog .btn { width: 100%; margin-top: 24px; }
+
+/* =========================================================
+   Motion (ページ読み込み時の1回のみ)
+   ========================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo, .hero-copy { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-copy { animation-delay: .12s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sticky-cta { transition: none; }
+}
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+@media (min-width: 600px) {
+  :root { --gutter: 32px; }
+  .hero-actions { grid-template-columns: auto auto; justify-content: start; }
+  .hero-actions .btn { width: auto; }
+  .concern-list { grid-template-columns: 1fr 1fr; }
+  .concern:first-child { grid-column: 1 / -1; }
+  .final-panels { grid-template-columns: 1fr 1fr; }
+  .panel { padding: 34px 30px; }
+}
+
+/* =========================================================
+   Desktop
+   ========================================================= */
+@media (min-width: 960px) {
+  :root { --gutter: 40px; }
+  .only-pc { display: inline; }
+  .header-cta { display: inline-flex; min-height: 44px; padding: 0 20px; font-size: 14px; }
+  .brand-name { font-size: 17px; }
+
+  .hero { padding: 48px 0 96px; }
+  .hero-inner { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  .hero-photo .photo-label { top: auto; left: auto; right: 16px; bottom: 16px; }
+  .hero-copy { order: 1; padding-top: 0; }
+  .hero-photo { order: 2; margin: 0; }
+  .hero-photo .photo-frame { border-radius: 160px 32px 32px 32px; aspect-ratio: 5 / 5.2; }
+  .hero-chip { right: auto; left: -28px; bottom: 40px; }
+  .hero h1 { font-size: clamp(30px, 3vw, 40px); }
+  .hero-sub { font-size: 15px; max-width: none; }
+
+  .section { padding: 112px 0; }
+  .section-head { margin-bottom: 52px; }
+
+  .worries { grid-template-columns: repeat(3, 1fr); }
+  .worry { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 8px 32px; border-top: none; border-left: 1px solid var(--line); }
+  .worry:first-child { border-left: none; }
+  .worry:last-child { border-bottom: none; }
+  .worry-icon { width: 80px; height: 80px; }
+  .worry-icon svg { width: 38px; height: 38px; }
+  .empathy-bridge { margin-top: 56px; font-size: 19px; }
+
+  .reasons-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; }
+  .reasons-photo .photo-frame { aspect-ratio: 4 / 4.6; border-radius: 32px 160px 32px 32px; }
+  .reasons-grid .section-head { margin-bottom: 36px; }
+
+  .concern-list { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .concern:first-child { grid-column: auto; }
+  .concern { padding: 32px 28px; }
+
+  .steps { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { grid-template-columns: 1fr; justify-items: center; text-align: center; padding-bottom: 0; }
+  .step:not(:last-child)::after {
+    left: calc(50% + 52px); right: calc(-50% + 40px); top: 44px; bottom: auto; width: auto; height: 2px;
+    background: repeating-linear-gradient(to right, var(--sage-300) 0 6px, transparent 6px 12px);
   }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
+  .step-visual { width: 88px; height: 88px; }
+  .step-visual svg { width: 40px; height: 40px; }
+  .step h3 { margin-top: 18px; }
+  .flow-note { text-align: center; }
+
+  .final-panels { gap: 24px; max-width: 960px; margin: 0 auto; }
+  .panel { padding: 40px 36px; }
+
+  .sticky-cta { display: none; }
+  .site-footer { padding-bottom: 48px; }
+}
 </style>
 </head>
 <body>
 
-<div class="sample-notice" role="note">このページは、架空の歯科医院を題材とした制作サンプルです。実在の医院・人物とは関係ありません。</div>
-
+<!-- =========================================================
+     Header
+     ========================================================= -->
 <header class="site-header">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="さくら歯科クリニック ページ先頭へ">
-      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-        <path d="M16 5c-3-2.5-9-2-10 3-.8 4 1 7 2 10 1 3 1.5 9 3.5 9 2.2 0 2-6 4.5-6s2.3 6 4.5 6c2 0 2.5-6 3.5-9 1-3 2.8-6 2-10-1-5-7-5.5-10-3z" fill="#FFFFFF" stroke="#4C7A5C" stroke-width="2" stroke-linejoin="round"/>
+    <a class="brand" href="#top" aria-label="さくら歯科クリニック（ページ先頭へ）">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="#E7EFE4"/>
+        <path d="M16 9.2c-1.9-1.6-5.7-1.3-6.4 1.9-.5 2.6.6 4.5 1.3 6.4.6 1.9 1 5.6 2.2 5.6 1.4 0 1.3-3.8 2.9-3.8s1.5 3.8 2.9 3.8c1.2 0 1.6-3.7 2.2-5.6.7-1.9 1.8-3.8 1.3-6.4-.7-3.2-4.5-3.5-6.4-1.9z" fill="#FFFFFF" stroke="#4F7055" stroke-width="1.6" stroke-linejoin="round"/>
       </svg>
-      さくら歯科クリニック
+      <span class="brand-name">さくら歯科クリニック</span>
     </a>
-    <a class="header-link" href="#reserve">初診のご予約</a>
+    <span class="sample-tag"><span class="tag-long">架空医院の</span>制作サンプル</span>
+    <a class="btn btn-primary header-cta" href="#consult">初診・ご相談について</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- 1. ファーストビュー -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <svg class="hero-illust" viewBox="0 0 240 240" role="img" aria-label="コップに並んだ大人用と子ども用の歯ブラシのイラスト">
-        <ellipse cx="120" cy="222" rx="70" ry="8" fill="#CFE2D3"/>
-        <g class="brush-big">
-          <rect x="102" y="40" width="14" height="160" rx="7" fill="#4C7A5C" transform="rotate(-9 110 200)"/>
-          <g transform="rotate(-9 110 200)">
-            <rect x="99" y="18" width="20" height="34" rx="6" fill="#FFFFFF" stroke="#4C7A5C" stroke-width="3"/>
-            <line x1="104" y1="24" x2="104" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
-            <line x1="109" y1="24" x2="109" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
-            <line x1="114" y1="24" x2="114" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
-          </g>
-        </g>
-        <g class="brush-small">
-          <g transform="rotate(13 140 200)">
-            <rect x="134" y="92" width="12" height="110" rx="6" fill="#E3B98E"/>
-            <rect x="132" y="72" width="16" height="28" rx="5" fill="#FFFFFF" stroke="#E3B98E" stroke-width="3"/>
-            <line x1="137" y1="78" x2="137" y2="94" stroke="#F5EEE3" stroke-width="3" stroke-linecap="round"/>
-            <line x1="143" y1="78" x2="143" y2="94" stroke="#F5EEE3" stroke-width="3" stroke-linecap="round"/>
-          </g>
-        </g>
-        <path d="M74 128h92l-8 84a12 12 0 0 1-12 11h-52a12 12 0 0 1-12-11z" fill="#F5EEE3" stroke="#E3D6C2" stroke-width="3"/>
-        <path d="M86 150h68" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
-      </svg>
+  <!-- =========================================================
+       1. First view
+       ========================================================= -->
+  <section class="hero" aria-labelledby="hero-title" id="hero">
+    <div class="wrap hero-inner">
 
-      <h1 id="hero-title">お子さんの歯も、<br>お父さん・お母さんの歯も。<span class="line2">家族みんなで相談できる歯科医院へ。</span></h1>
-
-      <p class="hero-lead">いつもお子さんの通院にお付き添いいただき、ありがとうございます。保護者の方ご自身のお口のことも、当院でご相談いただけます。</p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#reserve">初診のご予約について</a>
-        <a class="btn btn-secondary" href="#flow">初診の流れを見る</a>
+      <div class="hero-photo">
+        <figure class="photo-frame" style="margin:0">
+          <!--
+            写真差し替え用プレースホルダー。
+            実写真に差し替える場合は、下の <svg> を次のような <img> に置き換えてください。
+            <img src="images/hero.jpg" alt="明るい待合室で過ごす親子のイメージ" width="1200" height="1240">
+          -->
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="明るい待合室のベンチに座る親子のイメージ（写真差し替え用の仮イラスト）">
+            <defs>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F7F1E8"/><stop offset="1" stop-color="#F1E8DA"/>
+              </linearGradient>
+              <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E4EEE1"/>
+              </linearGradient>
+              <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FFFFFF" stop-opacity=".55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="600" fill="url(#wall)"/>
+            <!-- window -->
+            <rect x="330" y="60" width="220" height="300" rx="10" fill="url(#sky)" stroke="#E5DACA" stroke-width="6"/>
+            <line x1="440" y1="60" x2="440" y2="360" stroke="#E5DACA" stroke-width="5"/>
+            <line x1="330" y1="200" x2="550" y2="200" stroke="#E5DACA" stroke-width="5"/>
+            <ellipse cx="400" cy="300" rx="70" ry="40" fill="#CFE0CA" opacity=".7"/>
+            <ellipse cx="500" cy="310" rx="60" ry="34" fill="#BED4B8" opacity=".6"/>
+            <!-- light -->
+            <polygon points="330,360 550,360 470,560 160,560" fill="url(#beam)"/>
+            <!-- floor -->
+            <rect y="455" width="600" height="145" fill="#EADFCE"/>
+            <rect y="455" width="600" height="6" fill="#E1D3BE"/>
+            <!-- wall frame -->
+            <rect x="96" y="110" width="120" height="90" rx="6" fill="#FFFFFF" stroke="#E5DACA" stroke-width="4"/>
+            <path d="M112 182c18-30 32-30 46-12s28 0 42-20" fill="none" stroke="#B7CBB2" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="186" cy="138" r="9" fill="#F1C3A0"/>
+            <!-- plant -->
+            <path d="M70 455h56l-8 -64h-40z" fill="#E9C7A9"/>
+            <ellipse cx="98" cy="350" rx="18" ry="46" fill="#8FAE8C" transform="rotate(-22 98 350)"/>
+            <ellipse cx="108" cy="340" rx="16" ry="50" fill="#7E9D7C" transform="rotate(14 108 340)"/>
+            <ellipse cx="88" cy="372" rx="13" ry="34" fill="#A9C2A5" transform="rotate(-48 88 372)"/>
+            <!-- bench -->
+            <rect x="170" y="400" width="300" height="20" rx="10" fill="#D9C2A2"/>
+            <rect x="182" y="358" width="276" height="16" rx="8" fill="#E3CFB2"/>
+            <rect x="196" y="420" width="10" height="38" rx="4" fill="#C7AE8C"/>
+            <rect x="434" y="420" width="10" height="38" rx="4" fill="#C7AE8C"/>
+            <!-- parent -->
+            <path d="M232 400c0-62 16-106 52-106s52 44 52 106z" fill="#8FAE8C"/>
+            <circle cx="284" cy="262" r="28" fill="#E9CBB0"/>
+            <path d="M256 258c0-20 12-34 28-34s30 12 30 30c-10-8-34-10-58 4z" fill="#6E5A4B"/>
+            <!-- child -->
+            <path d="M330 400c0-40 10-70 36-70s36 30 36 70z" fill="#F1C3A0"/>
+            <circle cx="366" cy="306" r="21" fill="#EED3BA"/>
+            <path d="M345 302c0-14 9-24 21-24s22 9 22 22c-8-6-26-8-43 2z" fill="#7A6455"/>
+            <!-- book -->
+            <path d="M318 362l26 10 26-10v26l-26 10-26-10z" fill="#FFFFFF" stroke="#E1D3BE" stroke-width="2"/>
+            <line x1="344" y1="372" x2="344" y2="398" stroke="#E1D3BE" stroke-width="2"/>
+          </svg>
+          <figcaption class="photo-label">イメージ（写真差し替え予定）</figcaption>
+        </figure>
+        <div class="hero-chip" aria-hidden="true">
+          <span class="dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4F7055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          大人の方のご相談も受け付けています
+        </div>
       </div>
+
+      <div class="hero-copy">
+        <p class="hero-eyebrow">お子さんが通院中の保護者の方へ</p>
+        <h1 id="hero-title">
+          <span class="ph">お子さんの</span><span class="ph">いつもの歯医者さんで、</span><br>
+          <span class="ph">あなたのお口の</span><span class="ph">ことも。</span>
+        </h1>
+        <p class="hero-sub">
+子どもの歯は気にかけているのに、自分の歯はつい後回し。<br class="only-pc">いつもの通院先で、今度はご自身のことも相談してみませんか。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#consult">
+            初診・ご相談について
+            <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#flow">受診の流れを見る</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- 2. 共感 -->
-  <section class="block" aria-labelledby="empathy-title">
+  <!-- =========================================================
+       2. Empathy
+       ========================================================= -->
+  <section class="section empathy" aria-labelledby="empathy-title">
     <div class="wrap">
-      <h2 id="empathy-title">ご自身の歯のこと、<br>後回しにしていませんか？</h2>
-      <ul class="checklist">
-        <li>子どもの歯みがきは毎日見ているけれど、自分の歯はあまり気にかけていない</li>
-        <li>最後に歯医者さんで診てもらったのがいつだったか思い出せない</li>
-        <li>冷たいものがしみる、歯ぐきから血が出るなど、気になることがあっても様子を見ている</li>
-        <li>自分のための通院の時間を、なかなかつくれない</li>
+      <div class="section-head center">
+        <span class="kicker">保護者の方へ</span>
+        <h2 id="empathy-title"><span class="ph">ご自身の歯のこと、</span><span class="ph">後回しになって</span><span class="ph">いませんか？</span></h2>
+      </div>
+
+      <ul class="worries">
+        <li class="worry">
+          <div class="worry-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#C47F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="15" cy="12" r="5"/><path d="M6 32c0-6 4-11 9-11s9 5 9 11"/>
+              <circle cx="29" cy="18" r="3.5"/><path d="M23 32c0-4 3-8 6-8s6 4 6 8"/>
+            </svg>
+          </div>
+          <div>
+            <h3><span class="ph">子どもの歯は気にかけるのに、</span><span class="ph">自分の歯は後回し</span></h3>
+            <p>仕上げみがきや定期的な受診は欠かさないけれど、自分のことまでは手が回らない。</p>
+          </div>
+        </li>
+        <li class="worry">
+          <div class="worry-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#C47F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="7" y="9" width="26" height="24" rx="4"/><path d="M7 16h26M14 6v6M26 6v6"/>
+              <path d="M17.5 22.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5"/><circle cx="20" cy="29.5" r=".6" fill="#C47F52"/>
+            </svg>
+          </div>
+          <div>
+            <h3><span class="ph">気になる症状があっても、</span><span class="ph">受診のきっかけがない</span></h3>
+            <p>しみる、歯ぐきから血が出る。気づいてはいても、つい様子見にしてしまう。</p>
+          </div>
+        </li>
+        <li class="worry">
+          <div class="worry-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#C47F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 34V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v26"/><path d="M6 34h28"/><circle cx="25" cy="21" r="1.2" fill="#C47F52"/>
+            </svg>
+          </div>
+          <div>
+            <h3><span class="ph">初めての歯科医院に</span><span class="ph">行くのは、少し面倒</span></h3>
+            <p>新しく医院を探して、予約して、場所を調べて。それだけで足が遠のいてしまう。</p>
+          </div>
+        </li>
       </ul>
-      <p>お子さんのことを優先していると、ご自身のことはつい後になりがちです。</p>
-      <p class="empathy-close">いつもの通院の場所で、ご自身のことも一度話してみませんか。</p>
+
+      <p class="empathy-bridge">
+        <span class="ph">そのきっかけは、</span><span class="ph">いつもの通院先に</span><span class="ph">あるかもしれません。</span>
+      </p>
     </div>
   </section>
 
-  <!-- 3. 医院の方針 -->
-  <section class="block tint-beige" aria-labelledby="policy-title">
-    <div class="wrap">
-      <h2 id="policy-title">子どもから大人まで、<br>年齢を問わずご相談いただけます</h2>
-      <p>さくら歯科クリニックは、小さなお子さんから保護者の方まで、ご家族それぞれのお口の状態に合わせて診療を行う歯科医院です。</p>
-      <div class="policy-list">
-        <div class="policy-item">
-          <h3>どの年代の方も、同じ窓口で</h3>
-          <p>お子さんの診療だけでなく、大人の方の歯や歯ぐきのご相談もお受けしています。</p>
+  <!-- =========================================================
+       3. Reasons
+       ========================================================= -->
+  <section class="section reasons" aria-labelledby="reasons-title">
+    <div class="wrap reasons-grid">
+      <div class="reasons-photo">
+        <figure class="photo-frame" style="margin:0">
+          <!-- 受付・院内写真の差し替え用プレースホルダー -->
+          <svg viewBox="0 0 500 560" preserveAspectRatio="xMidYMid slice" role="img" aria-label="明るい受付カウンターのイメージ（写真差し替え用の仮イラスト）">
+            <rect width="500" height="560" fill="#F6F0E6"/>
+            <rect y="400" width="500" height="160" fill="#EADFCE"/>
+            <!-- pendant lights -->
+            <line x1="150" y1="0" x2="150" y2="110" stroke="#D9CBB5" stroke-width="2"/>
+            <path d="M126 130a24 24 0 0 1 48 0z" fill="#F1C3A0"/>
+            <line x1="330" y1="0" x2="330" y2="90" stroke="#D9CBB5" stroke-width="2"/>
+            <path d="M306 110a24 24 0 0 1 48 0z" fill="#B7CBB2"/>
+            <!-- sign -->
+            <rect x="170" y="170" width="160" height="56" rx="28" fill="#FFFFFF"/>
+            <path d="M200 188c-1.5-1.2-4.5-1-5 1.5-.4 2 .5 3.5 1 5 .5 1.5.8 4.4 1.8 4.4 1.1 0 1-3 2.2-3s1.2 3 2.2 3c1 0 1.3-2.9 1.8-4.4.5-1.5 1.4-3 1-5-.5-2.5-3.5-2.7-5-1.5z" fill="#FFFFFF" stroke="#4F7055" stroke-width="1.6"/>
+            <rect x="216" y="191" width="92" height="8" rx="4" fill="#E7EFE4"/>
+            <rect x="216" y="205" width="64" height="6" rx="3" fill="#EFE6D8"/>
+            <!-- counter -->
+            <rect x="60" y="300" width="380" height="150" rx="16" fill="#E3CFB2"/>
+            <rect x="48" y="286" width="404" height="22" rx="11" fill="#FFFFFF"/>
+            <rect x="60" y="320" width="380" height="10" fill="#D9C2A2" opacity=".6"/>
+            <!-- items on counter -->
+            <rect x="110" y="256" width="40" height="30" rx="6" fill="#B7CBB2"/>
+            <ellipse cx="130" cy="236" rx="12" ry="24" fill="#8FAE8C" transform="rotate(-12 130 236)"/>
+            <ellipse cx="140" cy="232" rx="10" ry="26" fill="#7E9D7C" transform="rotate(18 140 232)"/>
+            <rect x="330" y="262" width="70" height="24" rx="4" fill="#FFFFFF" stroke="#E5DACA" stroke-width="2"/>
+            <!-- plant floor -->
+            <path d="M410 520h50l-6-60h-38z" fill="#F1C3A0"/>
+            <ellipse cx="434" cy="420" rx="16" ry="44" fill="#8FAE8C" transform="rotate(-16 434 420)"/>
+            <ellipse cx="446" cy="414" rx="14" ry="48" fill="#A9C2A5" transform="rotate(16 446 414)"/>
+          </svg>
+          <figcaption class="photo-label">イメージ（写真差し替え予定）</figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <div class="section-head">
+          <span class="kicker">当院で相談する理由</span>
+          <h2 id="reasons-title"><span class="ph">いつもの歯医者さんだから、</span><span class="ph">相談しやすい。</span></h2>
         </div>
-        <div class="policy-item">
-          <h3>説明して、一緒に決める</h3>
-          <p>お口の状態や考えられる選択肢をご説明し、ご希望を伺いながら進め方を決めていくことを大切にしています。</p>
-        </div>
-        <div class="policy-item">
-          <h3>治療だけでなく、予防も</h3>
-          <p>気になる症状がないときのチェックやクリーニングも、ご家族のお口の健康を考えるきっかけとしてご活用ください。</p>
+
+        <ul class="reason-list">
+          <li class="reason">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4F7055" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <h3><span class="ph">場所も雰囲気も、</span><span class="ph">もう知っている</span></h3>
+              <p>お子さんの付き添いで何度も来ている医院なので、初めての場所を探す負担がありません。</p>
+            </div>
+          </li>
+          <li class="reason">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4F7055" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><circle cx="17.5" cy="10" r="2.2"/><path d="M15.5 20c.2-2.6 1.3-4.5 3.2-4.5 1.8 0 2.8 1.6 3 4.5"/></svg>
+            </div>
+            <div>
+              <h3><span class="ph">大人の方の</span><span class="ph">歯科相談にも対応</span></h3>
+              <p>小児歯科だけでなく、大人の方のむし歯や歯ぐき、クリーニングのご相談もお受けしています。</p>
+            </div>
+          </li>
+          <li class="reason">
+            <div class="reason-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#4F7055" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>
+            </div>
+            <div>
+              <h3><span class="ph">付き添いのときに、</span><span class="ph">受付で相談できる</span></h3>
+              <p>新たに電話をかけなくても、お子さんの受診日に受付でお声がけいただければご案内します。</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="reception-note">
+          <div class="bubble" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C47F52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          </div>
+          <p><strong><span class="ph">「私も一度、</span><span class="ph">診てもらえますか？」</span></strong><br>受付でこのひと言を伝えていただくだけで大丈夫です。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. 診療内容 -->
-  <section class="block" aria-labelledby="service-title">
+  <!-- =========================================================
+       4. Concerns
+       ========================================================= -->
+  <section class="section concerns" aria-labelledby="concerns-title">
     <div class="wrap">
-      <h2 id="service-title">診療内容</h2>
-      <div class="services">
-        <article class="service">
-          <h3>一般歯科</h3>
-          <p class="for">大人の方の「気になる」をご相談ください</p>
-          <ul>
-            <li>むし歯が気になる、歯がしみる</li>
-            <li>歯ぐきの腫れや出血が気になる</li>
-            <li>詰め物が取れた、歯が欠けた</li>
-          </ul>
+      <div class="section-head center">
+        <span class="kicker">相談できること</span>
+        <h2 id="concerns-title"><span class="ph">こんな「気になる」を、</span><span class="ph">ご相談ください。</span></h2>
+        <p class="lead">はっきりした症状がなくても、気がかりなことがあれば受診のきっかけになります。</p>
+      </div>
+
+      <div class="concern-list">
+        <article class="concern">
+          <div class="concern-voices" aria-label="たとえばこんなお悩み">
+            <span class="voice">冷たいものがしみる</span>
+            <span class="voice">歯が欠けた気がする</span>
+            <span class="voice">詰め物が取れた</span>
+          </div>
+          <div class="concern-title">
+            <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#E7EFE4"/><path d="M18 10.5c-2-1.7-6-1.4-6.8 2-.5 2.7.7 4.8 1.4 6.8.7 2 1 6 2.4 6 1.5 0 1.4-4 3-4s1.5 4 3 4c1.4 0 1.7-4 2.4-6 .7-2 1.9-4.1 1.4-6.8-.8-3.4-4.8-3.7-6.8-2z" fill="#fff" stroke="#4F7055" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <h3>むし歯・歯の痛み</h3>
+          </div>
+          <p>しみる、痛むといった症状のほか、「むし歯があるか見てほしい」というご相談もお受けしています。</p>
         </article>
-        <article class="service">
-          <h3>小児歯科</h3>
-          <p class="for">お子さんの成長に合わせて</p>
-          <ul>
-            <li>乳歯・永久歯のむし歯のチェック</li>
-            <li>歯みがきの仕方についてのご相談</li>
-            <li>歯並びなど、成長に関する気がかり</li>
-          </ul>
+
+        <article class="concern">
+          <div class="concern-voices" aria-label="たとえばこんなお悩み">
+            <span class="voice">歯みがきで血が出る</span>
+            <span class="voice">歯ぐきが腫れぼったい</span>
+          </div>
+          <div class="concern-title">
+            <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#E7EFE4"/><path d="M10 15c2.5-1.6 5-1.6 8 0s5.5 1.6 8 0" stroke="#C47F52" stroke-width="1.8" stroke-linecap="round"/><path d="M13 17v6c0 1.5 1 3 2.5 3s2.5-1.5 2.5-3m0-6v6c0 1.5 1 3 2.5 3s2.5-1.5 2.5-3v-6" stroke="#4F7055" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>歯ぐきの状態</h3>
+          </div>
+          <p>出血や腫れなど、歯ぐきの気になる変化について、お口の状態を確認しながらご説明します。</p>
         </article>
-        <article class="service">
-          <h3>予防歯科</h3>
-          <p class="for">症状がないときにも</p>
-          <ul>
-            <li>定期的なお口のチェック</li>
-            <li>歯のクリーニング</li>
-            <li>ご自宅でのケア方法のご相談</li>
-          </ul>
+
+        <article class="concern">
+          <div class="concern-voices" aria-label="たとえばこんなお悩み">
+            <span class="voice">しばらく診てもらっていない</span>
+            <span class="voice">歯の汚れが気になる</span>
+          </div>
+          <div class="concern-title">
+            <svg viewBox="0 0 36 36" fill="none" aria-hidden="true"><circle cx="18" cy="18" r="18" fill="#E7EFE4"/><path d="M18 9l7 3v5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5v-5z" fill="#fff" stroke="#4F7055" stroke-width="1.6" stroke-linejoin="round"/><path d="m15 17.5 2 2 4-4" stroke="#4F7055" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h3>クリーニング・予防のご相談</h3>
+          </div>
+          <p>症状がないときのチェックや歯のクリーニング、ご自宅でのケア方法についてもご相談いただけます。</p>
         </article>
       </div>
+
+      <p class="concern-foot">診療の内容や進め方は、お口の状態を確認したうえでご説明します。</p>
     </div>
   </section>
 
-  <!-- 5. 初診の流れ -->
-  <section class="block tint-green" id="flow" aria-labelledby="flow-title">
+  <!-- =========================================================
+       5. Flow
+       ========================================================= -->
+  <section class="section flow" id="flow" aria-labelledby="flow-title">
     <div class="wrap">
-      <h2 id="flow-title">初診の流れ</h2>
-      <ol class="flow">
-        <li>
-          <h3>ご予約</h3>
-          <p>Webまたはお電話でご予約ください。院内でこのページをご覧の方は、受付でのお声がけでも承ります。</p>
+      <div class="section-head center">
+        <span class="kicker">初診の流れ</span>
+        <h2 id="flow-title"><span class="ph">初めての方の</span><span class="ph">受診の流れ</span></h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step-visual" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#4F7055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="9" width="24" height="23" rx="4"/><path d="M8 16h24M15 6v6M25 6v6M15 23l3 3 6-6"/></svg>
+          </div>
+          <div>
+            <h3>ご予約・ご相談</h3>
+            <p>お子さんの受診時に受付でお声がけいただくか、Webやお電話でご予約ください。</p>
+          </div>
         </li>
-        <li>
-          <h3>受付・問診票のご記入</h3>
-          <p>気になっていること、これまでの歯科受診の状況などをご記入いただきます。</p>
+        <li class="step">
+          <div class="step-visual" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#4F7055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="8" width="20" height="26" rx="3"/><path d="M16 6h8v5h-8zM15 18h10M15 23h10M15 28h6"/></svg>
+          </div>
+          <div>
+            <h3>ご来院・問診</h3>
+            <p>気になっていることや、これまでの歯科受診の状況を伺います。</p>
+          </div>
         </li>
-        <li>
-          <h3>お話を伺います</h3>
-          <p>問診票をもとに、お困りのことやご希望を詳しく伺います。</p>
+        <li class="step">
+          <div class="step-visual" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#4F7055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="26" cy="12" r="6"/><path d="M21.8 16.2 8 30"/><circle cx="26" cy="12" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3>お口の状態の確認</h3>
+            <p>歯や歯ぐきの状態を確認します。必要に応じてレントゲン撮影などを行います。</p>
+          </div>
         </li>
-        <li>
-          <h3>お口の検査</h3>
-          <p>歯や歯ぐきの状態を確認します。必要に応じてレントゲン撮影などを行います。</p>
-        </li>
-        <li>
-          <h3>ご説明とご相談</h3>
-          <p>検査の結果と今後の進め方をご説明します。ご不明な点は遠慮なくご質問ください。</p>
+        <li class="step">
+          <div class="step-visual" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" stroke="#4F7055" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h18v12H13l-5 4v-4H6z"/><path d="M28 16h6v12h-2v4l-5-4h-9v-3"/></svg>
+          </div>
+          <div>
+            <h3>結果のご説明・ご相談</h3>
+            <p>確認した結果と今後の進め方をご説明します。ご不明な点は遠慮なくお尋ねください。</p>
+          </div>
         </li>
       </ol>
+
+      <p class="flow-note">※当日の内容や所要時間は、お口の状態やご予約の状況によって異なります。</p>
     </div>
   </section>
 
-  <!-- 6. よくある質問 -->
-  <section class="block" aria-labelledby="faq-title">
+  <!-- =========================================================
+       6. FAQ
+       ========================================================= -->
+  <section class="section faq" aria-labelledby="faq-title">
     <div class="wrap">
-      <h2 id="faq-title">よくあるご質問</h2>
-      <div class="faq">
-        <details>
-          <summary>何年も歯医者に行っていません。受診しても大丈夫ですか？</summary>
-          <div class="answer"><p>はい、ご相談ください。久しぶりの受診の方も、まずは今のお口の状態を確認するところから始めます。</p></div>
+      <div class="section-head center">
+        <span class="kicker">よくあるご質問</span>
+        <h2 id="faq-title"><span class="ph">保護者の方から</span><span class="ph">よくいただくご質問</span></h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary><span class="faq-q" aria-hidden="true">Q</span><span>子どもの受診と同じ日に、自分も相談できますか？</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <div class="faq-answer"><span class="faq-a" aria-hidden="true">A</span><p>ご希望の場合は、受付またはご予約の際にお伝えください。予約枠や当日の診療状況によっては、別の日時をご案内することがあります。</p></div>
         </details>
-        <details>
-          <summary>痛みが苦手で、不安があります。</summary>
-          <div class="answer"><p>不安なことや苦手なことは、問診のときにお伝えください。処置の内容を説明しながら進めるよう心がけています。</p></div>
+        <details class="faq-item">
+          <summary><span class="faq-q" aria-hidden="true">Q</span><span>何年も歯医者に行っていませんが、受診しても大丈夫ですか？</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <div class="faq-answer"><span class="faq-a" aria-hidden="true">A</span><p>はい、ご相談ください。久しぶりの方も、まずは今のお口の状態を確認するところから始めます。</p></div>
         </details>
-        <details>
-          <summary>子どもの受診と同じ日に予約できますか？</summary>
-          <div class="answer"><p>ご希望の場合は、ご予約の際にお伝えください。日時は予約の状況によって調整させていただきます。</p></div>
+        <details class="faq-item">
+          <summary><span class="faq-q" aria-hidden="true">Q</span><span>治療するか決めていなくても、相談だけで受診できますか？</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <div class="faq-answer"><span class="faq-a" aria-hidden="true">A</span><p>お口の状態を確認したうえで、考えられる進め方をご説明します。治療を始めるかどうかは、説明をお聞きになってからご検討いただけます。</p></div>
         </details>
-        <details>
-          <summary>初診のときの持ち物を教えてください。</summary>
-          <div class="answer"><p>マイナ保険証または資格確認書などをお持ちください。服用中のお薬がある方は、お薬手帳もあると確認がスムーズです。</p></div>
-        </details>
-        <details>
-          <summary>費用はどのくらいかかりますか？</summary>
-          <div class="answer"><p>お口の状態や診療の内容によって異なります。ご不明な点は、診療の前にお気軽にお尋ねください。</p></div>
+        <details class="faq-item">
+          <summary><span class="faq-q" aria-hidden="true">Q</span><span>初診のときは何を持っていけばよいですか？</span><span class="faq-toggle" aria-hidden="true"></span></summary>
+          <div class="faq-answer"><span class="faq-a" aria-hidden="true">A</span><p>マイナ保険証または資格確認書などをお持ちください。服用中のお薬がある方は、お薬手帳があると確認がスムーズです。</p></div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- 7. 初診予約の案内 -->
-  <section class="block tint-beige" id="reserve" aria-labelledby="reserve-title">
+  <!-- =========================================================
+       7. Final CTA
+       ========================================================= -->
+  <section class="section final" id="consult" aria-labelledby="final-title">
     <div class="wrap">
-      <h2 id="reserve-title">初診のご予約</h2>
-      <div class="reserve-box">
-        <h3>ご自身の受診を、まずは一度ご相談ください</h3>
-        <p>お子さんの次回の受診にあわせてご検討いただくことも可能です。</p>
-        <div class="reserve-actions">
-          <button type="button" class="btn btn-primary js-demo-open">Webで初診を予約する</button>
-          <button type="button" class="btn btn-secondary js-demo-open">電話で予約する</button>
-        </div>
-        <p class="btn-note">※制作サンプルのため、実際の予約受付は行っていません。</p>
+      <div class="section-head center">
+        <span class="kicker">初診・ご相談について</span>
+        <h2 id="final-title"><span class="ph">次は、</span><span class="ph">ご自身のお口のことも。</span></h2>
+        <p class="lead">今このページをご覧になっている場所に合わせて、ご相談の方法をお選びください。</p>
+      </div>
 
-        <div class="in-clinic">
-          <h3>院内でこのページをご覧の方へ<span class="demo-label">おすすめ</span></h3>
-          <p>お子さんの受付・お会計の際に、「自分も診てもらいたい」とスタッフにお声がけください。</p>
+      <div class="final-panels">
+        <div class="panel panel-clinic">
+          <span class="panel-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5V20H3z"/><path d="M9 20v-6h6v6"/></svg>
+            院内でご覧の方
+          </span>
+          <h3><span class="ph">お子さんの受付・</span><span class="ph">お会計の際に、</span><span class="ph">スタッフへ</span><span class="ph">お声がけください</span></h3>
+          <p class="panel-text">お子さんの受診のついでに、ご自身の初診についてご案内します。</p>
+          <p class="say-this"><small>たとえば、こう伝えるだけで大丈夫です</small>「私も一度、診てもらえますか？」</p>
+        </div>
+
+        <div class="panel panel-home">
+          <span class="panel-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            ご自宅などでご覧の方
+          </span>
+          <h3><span class="ph">Web・お電話で、</span><span class="ph">初診のご予約・</span><span class="ph">ご相談ができます</span></h3>
+          <p class="panel-text">次回のお子さんの受診日にあわせたご相談も承ります。</p>
+          <button type="button" class="btn btn-primary js-demo" aria-haspopup="dialog">初診・ご相談について</button>
+          <p class="demo-note">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 7v4M8 5h.01"/></svg>
+            制作サンプルのため、このボタンを押しても予約や情報送信は行われません。
+          </p>
         </div>
       </div>
     </div>
@@ -423,44 +836,87 @@
 
 </main>
 
-<!-- 追従CTA（スマートフォン） -->
-<div class="sticky-cta">
-  <a class="btn btn-primary" href="#reserve">保護者の方の初診予約について</a>
-</div>
-
-<!-- デモ用ダイアログ -->
-<dialog id="demo-dialog" aria-labelledby="demo-title">
-  <h2 id="demo-title">これは制作サンプルです</h2>
-  <p>このページは架空の歯科医院を題材としたデモのため、予約の受付や個人情報の送信は行われません。</p>
-  <form method="dialog">
-    <button class="btn btn-primary" style="width:100%">閉じる</button>
-  </form>
-</dialog>
-
+<!-- =========================================================
+     Footer
+     ========================================================= -->
 <footer class="site-footer">
   <div class="wrap">
-    <p class="name">さくら歯科クリニック</p>
-    <p>一般歯科・小児歯科・予防歯科</p>
-    <p class="sample">本ページは、架空の歯科医院を題材とした制作サンプルです。医院名・内容はすべて架空であり、実在の医院・患者・スタッフとは関係ありません。掲載内容は治療効果を保証するものではありません。</p>
-    <p><small>&copy; Portfolio Sample</small></p>
+    <div class="footer-brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="#4F7055"/>
+        <path d="M16 9.2c-1.9-1.6-5.7-1.3-6.4 1.9-.5 2.6.6 4.5 1.3 6.4.6 1.9 1 5.6 2.2 5.6 1.4 0 1.3-3.8 2.9-3.8s1.5 3.8 2.9 3.8c1.2 0 1.6-3.7 2.2-5.6.7-1.9 1.8-3.8 1.3-6.4-.7-3.2-4.5-3.5-6.4-1.9z" fill="#FFFFFF"/>
+      </svg>
+      さくら歯科クリニック
+    </div>
+    <p class="footer-meta">一般歯科／小児歯科／予防歯科</p>
+
+    <div class="footer-sample" role="note">
+      <strong><span class="ph">このページは、</span><span class="ph">架空の歯科医院を題材とした</span><span class="ph">制作サンプルです。</span></strong>
+      <p>医院名・内容はすべて架空のもので、実在の医院・患者・スタッフとは関係ありません。予約・問い合わせ機能はなく、掲載内容は治療の効果を保証するものではありません。写真枠は差し替えを想定した仮のイラストです。</p>
+    </div>
+
+    <p class="footer-copy">&copy; Portfolio Sample</p>
   </div>
 </footer>
 
+<!-- スマートフォン用 追従ボタン -->
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="btn btn-primary" href="#consult" tabindex="-1">初診・ご相談について</a>
+</div>
+
+<!-- デモ用ダイアログ -->
+<dialog id="demo-dialog" aria-labelledby="demo-title" aria-describedby="demo-desc">
+  <div class="dialog-body">
+    <span class="dialog-badge">デモ表示</span>
+    <h2 id="demo-title">このページは制作サンプルです</h2>
+    <p id="demo-desc">実際の医院サイトでは、このボタンから初診予約ページやお電話のご案内へ進む想定です。このページでは、予約の受付や個人情報の送信は行われません。</p>
+    <form method="dialog">
+      <button class="btn btn-primary" type="submit">閉じる</button>
+    </form>
+  </div>
+</dialog>
+
 <script>
-  // デモ用：予約ボタンでお知らせを表示する（送信処理なし）
-  (function () {
-    var dialog = document.getElementById('demo-dialog');
-    var buttons = document.querySelectorAll('.js-demo-open');
-    buttons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (dialog && typeof dialog.showModal === 'function') {
-          dialog.showModal();
-        } else {
-          alert('このページは制作サンプルのため、実際の予約受付は行っていません。');
-        }
-      });
+(function () {
+  // デモボタン：説明ダイアログを開く（送信処理なし）
+  var dialog = document.getElementById('demo-dialog');
+  document.querySelectorAll('.js-demo').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (dialog && typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        alert('このページは制作サンプルです。予約の受付や個人情報の送信は行われません。');
+      }
     });
-  })();
+  });
+  if (dialog) {
+    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+  }
+
+  // 追従ボタン：ファーストビューを過ぎたら表示し、最後のCTA付近では隠す
+  var sticky = document.getElementById('sticky-cta');
+  var hero = document.getElementById('hero');
+  var consult = document.getElementById('consult');
+  if (!sticky || !hero || !consult || !('IntersectionObserver' in window)) return;
+  var heroVisible = true, consultVisible = false;
+  function update() {
+    var show = !heroVisible && !consultVisible;
+    sticky.classList.toggle('is-visible', show);
+    sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+    sticky.querySelector('a').setAttribute('tabindex', show ? '0' : '-1');
+  }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.target === hero) heroVisible = en.isIntersecting;
+      if (en.target === consult) consultVisible = en.isIntersecting;
+    });
+    update();
+  }, { threshold: 0 }).observe(hero);
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { consultVisible = en.isIntersecting; });
+    update();
+  }, { threshold: 0 }).observe(consult);
+})();
 </script>
 </body>
 </html>
