@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>さくら歯科クリニック｜お子さんの歯も、お父さん・お母さんの歯も。【制作サンプル】</title>
+<meta name="description" content="架空の歯科医院「さくら歯科クリニック」を題材としたランディングページの制作サンプルです。">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root {
+    --white: #FFFFFF;
+    --green-50: #EEF5EF;
+    --green-200: #CFE2D3;
+    --green-600: #4C7A5C;
+    --green-700: #3E6650;
+    --beige: #F5EEE3;
+    --sand: #E3D6C2;
+    --ink: #2A3A31;
+    --muted: #56655C;
+    --radius-l: 24px;
+    --radius-s: 12px;
+    --font-head: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    --font-body: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "BIZ UDPGothic", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.9;
+    letter-spacing: 0.02em;
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+  img, svg { max-width: 100%; height: auto; display: block; }
+  a { color: var(--green-700); }
+  :focus-visible { outline: 3px solid var(--green-600); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* 制作サンプル表記 */
+  .sample-notice {
+    background: var(--ink);
+    color: var(--white);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+    padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 8px;
+  }
+
+  /* ヘッダー */
+  .site-header { border-bottom: 1px solid var(--green-200); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
+  .logo { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .logo-mark { width: 28px; height: 28px; }
+  .header-link { font-size: 14px; font-weight: 700; text-decoration: none; padding: 10px 4px; }
+
+  /* ボタン */
+  .btn {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 56px; padding: 12px 24px;
+    border-radius: 999px; border: 2px solid var(--green-600);
+    font-family: var(--font-head); font-size: 17px; font-weight: 700;
+    text-decoration: none; cursor: pointer; text-align: center; line-height: 1.4;
+  }
+  .btn-primary { background: var(--green-600); color: var(--white); }
+  .btn-primary:hover { background: var(--green-700); border-color: var(--green-700); }
+  .btn-secondary { background: var(--white); color: var(--green-700); }
+  .btn-secondary:hover { background: var(--green-50); }
+  .btn-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; text-align: center; }
+
+  /* ファーストビュー */
+  .hero { background: var(--green-50); padding: 40px 0 48px; overflow: hidden; }
+  .hero .wrap { display: grid; gap: 24px; }
+  .hero-illust { width: 180px; margin: 0 auto; }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.5; margin: 0; letter-spacing: 0.04em;
+  }
+  .hero h1 .line2 { display: block; font-size: 0.72em; color: var(--green-700); margin-top: 8px; }
+  .hero-lead { margin: 0; font-size: 16px; }
+  .hero-actions { display: grid; gap: 12px; }
+
+  /* セクション共通 */
+  section.block { padding: 64px 0; }
+  section.block.tint-beige { background: var(--beige); }
+  section.block.tint-green { background: var(--green-50); }
+  .block h2 {
+    font-family: var(--font-head);
+    font-size: clamp(22px, 5.6vw, 30px);
+    line-height: 1.55; margin: 0 0 24px;
+    padding-left: 16px; border-left: 6px solid var(--green-600);
+  }
+  .block p { margin: 0 0 16px; }
+
+  /* 共感 */
+  .checklist { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 12px; }
+  .checklist li {
+    background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-s);
+    padding: 14px 16px 14px 52px; position: relative;
+  }
+  .checklist li::before {
+    content: ""; position: absolute; left: 16px; top: 17px;
+    width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--green-600); background: var(--white);
+  }
+  .checklist li::after {
+    content: ""; position: absolute; left: 23px; top: 20px;
+    width: 7px; height: 12px; border: solid var(--green-600); border-width: 0 3px 3px 0; transform: rotate(45deg);
+  }
+  .empathy-close { font-family: var(--font-head); font-size: 18px; font-weight: 700; line-height: 1.7; }
+
+  /* 方針 */
+  .policy-list { display: grid; gap: 28px; margin: 32px 0 0; }
+  .policy-item h3 { font-family: var(--font-head); font-size: 19px; margin: 0 0 6px; color: var(--green-700); }
+  .policy-item p { margin: 0; }
+
+  /* 診療内容 */
+  .services { display: grid; gap: 16px; }
+  .service { background: var(--white); border: 2px solid var(--green-200); border-radius: var(--radius-l); padding: 24px; }
+  .service h3 { font-family: var(--font-head); font-size: 20px; margin: 0 0 4px; }
+  .service .for { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
+  .service ul { margin: 0; padding-left: 1.2em; }
+  .service li { margin-bottom: 4px; }
+
+  /* 初診の流れ */
+  .flow { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .flow li { counter-increment: step; position: relative; padding: 0 0 28px 64px; }
+  .flow li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green-600); color: var(--white);
+    font-family: var(--font-head); font-weight: 700; font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .flow li:not(:last-child)::after {
+    content: ""; position: absolute; left: 21px; top: 50px; bottom: 6px; width: 2px; background: var(--green-200);
+  }
+  .flow h3 { font-family: var(--font-head); font-size: 18px; margin: 6px 0 4px; }
+  .flow p { margin: 0; }
+
+  /* FAQ */
+  .faq { display: grid; gap: 12px; }
+  .faq details { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius-s); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    padding: 16px 52px 16px 16px; position: relative;
+    font-weight: 700; min-height: 56px; display: flex; align-items: center;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+"; position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    width: 28px; height: 28px; border-radius: 50%; background: var(--green-50); color: var(--green-700);
+    display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1;
+  }
+  .faq details[open] summary::after { content: "−"; }
+  .faq .answer { padding: 0 16px 16px; color: var(--ink); }
+  .faq .answer p { margin: 0; }
+
+  /* 予約 */
+  .reserve-box { background: var(--white); border-radius: var(--radius-l); padding: 28px 20px; border: 2px solid var(--green-600); }
+  .reserve-box h3 { font-family: var(--font-head); font-size: 18px; margin: 0 0 8px; }
+  .reserve-actions { display: grid; gap: 12px; margin: 20px 0 8px; }
+  .in-clinic { margin-top: 28px; padding-top: 24px; border-top: 1px dashed var(--sand); }
+  .demo-label { display: inline-block; font-size: 12px; font-weight: 700; color: var(--green-700); background: var(--green-50); border-radius: 6px; padding: 2px 8px; margin-left: 6px; vertical-align: middle; }
+
+  /* 追従CTA（スマホ） */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    background: rgba(255,255,255,0.96); border-top: 1px solid var(--green-200);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+  .sticky-cta .btn { max-width: 480px; margin: 0 auto; min-height: 52px; }
+
+  /* ダイアログ */
+  dialog {
+    border: none; border-radius: var(--radius-l); padding: 28px 24px; max-width: min(92vw, 420px);
+    color: var(--ink); font-family: var(--font-body);
+  }
+  dialog::backdrop { background: rgba(42,58,49,0.55); }
+  dialog h2 { font-family: var(--font-head); font-size: 20px; margin: 0 0 12px; }
+  dialog p { margin: 0 0 20px; }
+
+  /* フッター */
+  .site-footer { background: var(--ink); color: var(--white); padding: 32px 0 40px; font-size: 14px; line-height: 1.8; }
+  .site-footer .name { font-family: var(--font-head); font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+  .site-footer p { margin: 0 0 8px; }
+  .site-footer .sample { border: 1px solid rgba(255,255,255,0.5); border-radius: var(--radius-s); padding: 12px 14px; margin-top: 16px; }
+
+  /* タブレット・PC */
+  @media (min-width: 768px) {
+    body { padding-bottom: 0; }
+    .sticky-cta { display: none; }
+    .hero { padding: 64px 0 72px; }
+    .hero .wrap { grid-template-columns: 1fr 200px; align-items: center; column-gap: 40px; }
+    .hero-illust { grid-column: 2; grid-row: 1 / span 3; width: 200px; }
+    .hero-actions { grid-template-columns: 1fr 1fr; }
+    section.block { padding: 88px 0; }
+    .reserve-actions { grid-template-columns: 1fr 1fr; }
+    .reserve-box { padding: 36px 32px; }
+  }
+
+  /* 唯一の演出：歯ブラシが寄り添う */
+  @media (prefers-reduced-motion: no-preference) {
+    .brush-big { transform-origin: 110px 200px; animation: lean-big 1.2s ease-out 0.3s both; }
+    .brush-small { transform-origin: 140px 200px; animation: lean-small 1.2s ease-out 0.3s both; }
+    @keyframes lean-big { from { transform: rotate(4deg); } to { transform: rotate(0); } }
+    @keyframes lean-small { from { transform: rotate(-6deg); } to { transform: rotate(0); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sample-notice" role="note">このページは、架空の歯科医院を題材とした制作サンプルです。実在の医院・人物とは関係ありません。</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="さくら歯科クリニック ページ先頭へ">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 5c-3-2.5-9-2-10 3-.8 4 1 7 2 10 1 3 1.5 9 3.5 9 2.2 0 2-6 4.5-6s2.3 6 4.5 6c2 0 2.5-6 3.5-9 1-3 2.8-6 2-10-1-5-7-5.5-10-3z" fill="#FFFFFF" stroke="#4C7A5C" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      さくら歯科クリニック
+    </a>
+    <a class="header-link" href="#reserve">初診のご予約</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. ファーストビュー -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <svg class="hero-illust" viewBox="0 0 240 240" role="img" aria-label="コップに並んだ大人用と子ども用の歯ブラシのイラスト">
+        <ellipse cx="120" cy="222" rx="70" ry="8" fill="#CFE2D3"/>
+        <g class="brush-big">
+          <rect x="102" y="40" width="14" height="160" rx="7" fill="#4C7A5C" transform="rotate(-9 110 200)"/>
+          <g transform="rotate(-9 110 200)">
+            <rect x="99" y="18" width="20" height="34" rx="6" fill="#FFFFFF" stroke="#4C7A5C" stroke-width="3"/>
+            <line x1="104" y1="24" x2="104" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
+            <line x1="109" y1="24" x2="109" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
+            <line x1="114" y1="24" x2="114" y2="46" stroke="#CFE2D3" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </g>
+        <g class="brush-small">
+          <g transform="rotate(13 140 200)">
+            <rect x="134" y="92" width="12" height="110" rx="6" fill="#E3B98E"/>
+            <rect x="132" y="72" width="16" height="28" rx="5" fill="#FFFFFF" stroke="#E3B98E" stroke-width="3"/>
+            <line x1="137" y1="78" x2="137" y2="94" stroke="#F5EEE3" stroke-width="3" stroke-linecap="round"/>
+            <line x1="143" y1="78" x2="143" y2="94" stroke="#F5EEE3" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </g>
+        <path d="M74 128h92l-8 84a12 12 0 0 1-12 11h-52a12 12 0 0 1-12-11z" fill="#F5EEE3" stroke="#E3D6C2" stroke-width="3"/>
+        <path d="M86 150h68" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+      </svg>
+
+      <h1 id="hero-title">お子さんの歯も、<br>お父さん・お母さんの歯も。<span class="line2">家族みんなで相談できる歯科医院へ。</span></h1>
+
+      <p class="hero-lead">いつもお子さんの通院にお付き添いいただき、ありがとうございます。保護者の方ご自身のお口のことも、当院でご相談いただけます。</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#reserve">初診のご予約について</a>
+        <a class="btn btn-secondary" href="#flow">初診の流れを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 共感 -->
+  <section class="block" aria-labelledby="empathy-title">
+    <div class="wrap">
+      <h2 id="empathy-title">ご自身の歯のこと、<br>後回しにしていませんか？</h2>
+      <ul class="checklist">
+        <li>子どもの歯みがきは毎日見ているけれど、自分の歯はあまり気にかけていない</li>
+        <li>最後に歯医者さんで診てもらったのがいつだったか思い出せない</li>
+        <li>冷たいものがしみる、歯ぐきから血が出るなど、気になることがあっても様子を見ている</li>
+        <li>自分のための通院の時間を、なかなかつくれない</li>
+      </ul>
+      <p>お子さんのことを優先していると、ご自身のことはつい後になりがちです。</p>
+      <p class="empathy-close">いつもの通院の場所で、ご自身のことも一度話してみませんか。</p>
+    </div>
+  </section>
+
+  <!-- 3. 医院の方針 -->
+  <section class="block tint-beige" aria-labelledby="policy-title">
+    <div class="wrap">
+      <h2 id="policy-title">子どもから大人まで、<br>年齢を問わずご相談いただけます</h2>
+      <p>さくら歯科クリニックは、小さなお子さんから保護者の方まで、ご家族それぞれのお口の状態に合わせて診療を行う歯科医院です。</p>
+      <div class="policy-list">
+        <div class="policy-item">
+          <h3>どの年代の方も、同じ窓口で</h3>
+          <p>お子さんの診療だけでなく、大人の方の歯や歯ぐきのご相談もお受けしています。</p>
+        </div>
+        <div class="policy-item">
+          <h3>説明して、一緒に決める</h3>
+          <p>お口の状態や考えられる選択肢をご説明し、ご希望を伺いながら進め方を決めていくことを大切にしています。</p>
+        </div>
+        <div class="policy-item">
+          <h3>治療だけでなく、予防も</h3>
+          <p>気になる症状がないときのチェックやクリーニングも、ご家族のお口の健康を考えるきっかけとしてご活用ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 診療内容 -->
+  <section class="block" aria-labelledby="service-title">
+    <div class="wrap">
+      <h2 id="service-title">診療内容</h2>
+      <div class="services">
+        <article class="service">
+          <h3>一般歯科</h3>
+          <p class="for">大人の方の「気になる」をご相談ください</p>
+          <ul>
+            <li>むし歯が気になる、歯がしみる</li>
+            <li>歯ぐきの腫れや出血が気になる</li>
+            <li>詰め物が取れた、歯が欠けた</li>
+          </ul>
+        </article>
+        <article class="service">
+          <h3>小児歯科</h3>
+          <p class="for">お子さんの成長に合わせて</p>
+          <ul>
+            <li>乳歯・永久歯のむし歯のチェック</li>
+            <li>歯みがきの仕方についてのご相談</li>
+            <li>歯並びなど、成長に関する気がかり</li>
+          </ul>
+        </article>
+        <article class="service">
+          <h3>予防歯科</h3>
+          <p class="for">症状がないときにも</p>
+          <ul>
+            <li>定期的なお口のチェック</li>
+            <li>歯のクリーニング</li>
+            <li>ご自宅でのケア方法のご相談</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 初診の流れ -->
+  <section class="block tint-green" id="flow" aria-labelledby="flow-title">
+    <div class="wrap">
+      <h2 id="flow-title">初診の流れ</h2>
+      <ol class="flow">
+        <li>
+          <h3>ご予約</h3>
+          <p>Webまたはお電話でご予約ください。院内でこのページをご覧の方は、受付でのお声がけでも承ります。</p>
+        </li>
+        <li>
+          <h3>受付・問診票のご記入</h3>
+          <p>気になっていること、これまでの歯科受診の状況などをご記入いただきます。</p>
+        </li>
+        <li>
+          <h3>お話を伺います</h3>
+          <p>問診票をもとに、お困りのことやご希望を詳しく伺います。</p>
+        </li>
+        <li>
+          <h3>お口の検査</h3>
+          <p>歯や歯ぐきの状態を確認します。必要に応じてレントゲン撮影などを行います。</p>
+        </li>
+        <li>
+          <h3>ご説明とご相談</h3>
+          <p>検査の結果と今後の進め方をご説明します。ご不明な点は遠慮なくご質問ください。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. よくある質問 -->
+  <section class="block" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 id="faq-title">よくあるご質問</h2>
+      <div class="faq">
+        <details>
+          <summary>何年も歯医者に行っていません。受診しても大丈夫ですか？</summary>
+          <div class="answer"><p>はい、ご相談ください。久しぶりの受診の方も、まずは今のお口の状態を確認するところから始めます。</p></div>
+        </details>
+        <details>
+          <summary>痛みが苦手で、不安があります。</summary>
+          <div class="answer"><p>不安なことや苦手なことは、問診のときにお伝えください。処置の内容を説明しながら進めるよう心がけています。</p></div>
+        </details>
+        <details>
+          <summary>子どもの受診と同じ日に予約できますか？</summary>
+          <div class="answer"><p>ご希望の場合は、ご予約の際にお伝えください。日時は予約の状況によって調整させていただきます。</p></div>
+        </details>
+        <details>
+          <summary>初診のときの持ち物を教えてください。</summary>
+          <div class="answer"><p>マイナ保険証または資格確認書などをお持ちください。服用中のお薬がある方は、お薬手帳もあると確認がスムーズです。</p></div>
+        </details>
+        <details>
+          <summary>費用はどのくらいかかりますか？</summary>
+          <div class="answer"><p>お口の状態や診療の内容によって異なります。ご不明な点は、診療の前にお気軽にお尋ねください。</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 初診予約の案内 -->
+  <section class="block tint-beige" id="reserve" aria-labelledby="reserve-title">
+    <div class="wrap">
+      <h2 id="reserve-title">初診のご予約</h2>
+      <div class="reserve-box">
+        <h3>ご自身の受診を、まずは一度ご相談ください</h3>
+        <p>お子さんの次回の受診にあわせてご検討いただくことも可能です。</p>
+        <div class="reserve-actions">
+          <button type="button" class="btn btn-primary js-demo-open">Webで初診を予約する</button>
+          <button type="button" class="btn btn-secondary js-demo-open">電話で予約する</button>
+        </div>
+        <p class="btn-note">※制作サンプルのため、実際の予約受付は行っていません。</p>
+
+        <div class="in-clinic">
+          <h3>院内でこのページをご覧の方へ<span class="demo-label">おすすめ</span></h3>
+          <p>お子さんの受付・お会計の際に、「自分も診てもらいたい」とスタッフにお声がけください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 追従CTA（スマートフォン） -->
+<div class="sticky-cta">
+  <a class="btn btn-primary" href="#reserve">保護者の方の初診予約について</a>
+</div>
+
+<!-- デモ用ダイアログ -->
+<dialog id="demo-dialog" aria-labelledby="demo-title">
+  <h2 id="demo-title">これは制作サンプルです</h2>
+  <p>このページは架空の歯科医院を題材としたデモのため、予約の受付や個人情報の送信は行われません。</p>
+  <form method="dialog">
+    <button class="btn btn-primary" style="width:100%">閉じる</button>
+  </form>
+</dialog>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="name">さくら歯科クリニック</p>
+    <p>一般歯科・小児歯科・予防歯科</p>
+    <p class="sample">本ページは、架空の歯科医院を題材とした制作サンプルです。医院名・内容はすべて架空であり、実在の医院・患者・スタッフとは関係ありません。掲載内容は治療効果を保証するものではありません。</p>
+    <p><small>&copy; Portfolio Sample</small></p>
+  </div>
+</footer>
+
+<script>
+  // デモ用：予約ボタンでお知らせを表示する（送信処理なし）
+  (function () {
+    var dialog = document.getElementById('demo-dialog');
+    var buttons = document.querySelectorAll('.js-demo-open');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (dialog && typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        } else {
+          alert('このページは制作サンプルのため、実際の予約受付は行っていません。');
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
